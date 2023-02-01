@@ -1,0 +1,11 @@
+soqlDemo.parentChild_SOQL2();
+soqlDemo.parentTOChild_SOQL1();
+soqlDemo.choldToParent_SOQL1();
+soqlDemo.accountFillter_Soql('sForce');
+soqlDemo.accountFillter_Soql('GenePoint');
+soqlDemo.accountFillter_Soql('DsA');
+soqlDemo.accountFillter_Soql();
+soqlDemo.accountSoqL_3();
+soqlDemo.accountSoqL_2();
+soqlDemo.accounSoqL_11();
+soqlDemo.accounSOQL_1();
