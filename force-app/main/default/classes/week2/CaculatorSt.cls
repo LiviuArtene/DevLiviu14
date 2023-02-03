@@ -1,4 +1,5 @@
 public  class CaculatorSt {
+   //PrMITRO METHOD CDMMENT
    public static integer add(integer a ,integer b) {
     return a+b;
        }
