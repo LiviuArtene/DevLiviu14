@@ -26,14 +26,63 @@
 trigger AccountTrigger on Account (before insert, before update, after insert, after update) {
     system.debug('----- trigger start -----');
 
-    if (trigger.isAfter) {
-        system.debug( 'new record printed===>'+trigger.new);
-        
+
+Map<Id, account> trgnewMap = trigger.newMap;
+Map<Id, account> trgnoldMap = trigger.oldMap;
+
+if (Trigger.isBefore && Trigger.isinsert) {
+   system.debug('======Before Insert=====');
+       system.debug('trigger.newnap in BEFORE INSERT -->  ' + trgNewMap); //.new is present. ID is null.
+       system.debug('trigger.oldMap -> ' + trgnoldMap);
+} 
+ if (Trigger.isAfter && Trigger.isInsert) {
+        system.debug('====AFTER INSERT====');
+        system.debug('trigger.newMap -> ' + trgNewMap);//yes
+        system.debug('trigger.oldMap -> ' + trgnoldMap);//Old is null. So oldMap is also NULL, obviously.
+    }
+
+ if (Trigger.isBefore && Trigger.isUpdate) {
+        system.debug('====BEFORE UPDATE====');
+        system.debug('trigger.newMap -> ' + trgNewMap);//yes
+        system.debug('trigger.oldMap -> ' + trgnoldMap);//yes
+    }
+ if (Trigger.isAfter && Trigger.isUPDATE) {
+        system.debug('====AFTER UPDATE====');
+        system.debug('trigger.newMap -> ' + trgNewMap);//yes
+        system.debug('trigger.oldMap -> ' + trgnoldMap);//yes
     }
 
 
+
+
+  /*  if (Trigger.isBefore && Trigger.isinsert) {
+        system.debug('trigger.new in BEFORE INSERT -->  ' + trigger.new); //.new is present. ID is null.
+    }
+    if (Trigger.isAfter && Trigger.isinsert) {
+        system.debug('trigger.new in AFTER INSERT -->  ' + trigger.new); //yes ID prezent . 
+    }
+    if (Trigger.isBefore && Trigger.isUpdate) {
+        system.debug('trigger.new in BEFORE Update -->  ' + trigger.new);//yes
+    }
+    if (Trigger.isAfter && Trigger.isUpdate) {
+        system.debug('trigger.new in AFTER Update -->  ' + trigger.new);//yes
+    }
     system.debug('===== trigger end =====');
 
+  /*  List<Account> newAccount = trigger.new;
+
+    if (trigger.isAfter) {
+        system.debug( 'new record printed===>'+newAccount);
+        system.debug( 'numberOf rcords inserted/updated: '+newAccount.size());
+        
+        for (Account eachAcc : newaccount) {
+            system.debug('new acc id is  '+ eachAcc.Id+ 'new acc name is  '+ eachAcc.Name);
+            
+        }
+    }*/
+
+
+  
     // system.debug('Trigger.isBefore -> ' + Trigger.isBefore);
     // system.debug('Trigger.isAfter -> ' + Trigger.isAfter);
 
