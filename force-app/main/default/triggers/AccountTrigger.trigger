@@ -25,11 +25,68 @@
 }*/
 trigger AccountTrigger on Account (before insert, before update, after insert, after update) {
     system.debug('----- trigger start -----');
+   
+    if (Trigger.isBefore) {
+        //call handler method
+        AccountTriggerHandler.updateDescription(Trigger.New, Trigger.Old, Trigger.NewMap, Trigger.Oldmap);
+    }
+        
+   
 
 
-Map<Id, account> trgnewMap = trigger.newMap;
-Map<Id, account> trgnoldMap = trigger.oldMap;
 
+
+
+
+
+
+
+
+
+// Map<Id, account> trgnewMap = trigger.newMap;
+// Map<Id, account> trgnoldMap = trigger.oldMap;
+
+//     if (trigger.isBefore && trigger.isUpdate) {
+//         integer countWeb=0;
+//         for (id eachid : trgnewMap.keySet()) {
+//             Account newAccount = trgnewMap.get(eachid);
+//             Account oldAccount = trgnoldMap.get(eachid);
+
+//             system.debug('new account websit field value '+ newAccount.Website);
+//             system.debug('Old account websit field value '+ oldAccount.Website);
+//             if (newAccount.Website!= oldAccount.Website) {
+//                 system.debug('for Account ' +newAccount.Name +'  new website is  '+ newAccount.Website);
+//                 countweb++;
+
+
+                
+//             }
+//         }
+//         system.debug('total of Account  whit website Update '+countweb);
+   // }
+
+
+
+
+// if (Trigger.isAfter && Trigger.isUpdate) {
+
+//     Set<id> setIds = trgnewMap.keySet();
+
+//     for (Id eachID : setIds) {
+//         Account newAcc= trgnewMap.get(eachID);
+//         Account oldAcc= trgnoldMap.get(eachID);
+
+//         string newName= newAcc.Name;
+//         string oldName= oldAcc.Name;
+//         system.debug( 'new Account name is ' + newName +'Old account name Was '+oldName);
+        
+//     }
+
+// }
+
+system.debug('----- trigger EnD -----');
+
+/*
 if (Trigger.isBefore && Trigger.isinsert) {
    system.debug('======Before Insert=====');
        system.debug('trigger.newnap in BEFORE INSERT -->  ' + trgNewMap); //.new is present. ID is null.
@@ -50,7 +107,7 @@ if (Trigger.isBefore && Trigger.isinsert) {
         system.debug('====AFTER UPDATE====');
         system.debug('trigger.newMap -> ' + trgNewMap);//yes
         system.debug('trigger.oldMap -> ' + trgnoldMap);//yes
-    }
+    }*/
 
 
 

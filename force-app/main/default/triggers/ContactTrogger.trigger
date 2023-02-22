@@ -1,28 +1,11 @@
 trigger ContactTrogger on Contact (before insert,after insert, before update,after update) {
 
-
-
-   if (trigger.isBefore) {
-        system.debug('we are in Before trigger.');
-        if (trigger.isInsert) {
-            system.debug('before insert trigger.');
-            }
-        if (trigger.isUpdate) {
-            system.debug('before update trigger..');
-                       
-        }        
-    }
-
-    if (trigger.isAfter) {
-        System.debug('we are in after trigger');
-        if (trigger.isInsert) {
-                system.debug('After insert trigger.');
-        }
-        if (trigger.isUpdate) {
-            system.debug('aAfter update trigger..');
-            
-        }
-    
-    }
+    if (Trigger.isBefore && Trigger.isUpdate) {
+        //call validation method of handler
+        //ContactTriggerHandler.contactUpdateValidation1(Trigger.new, trigger.old, trigger.newmap,trigger.oldmap);
+        ContactTriggerHandler.contactUpdateValidastion2(Trigger.new, trigger.old, trigger.newmap,trigger.oldmap);
+   }
+   
 
 }
+
